@@ -6,7 +6,7 @@ const CartWidget = () => {
 
   return (
     <div>
-        <img  src={imgCarrito} alt="Imagen del carrito de compras" />
+        <img  src={imgCarrito} alt="Imagen del carrito de compras" style={{maxHeight:'50px'}}/>
     </div>
   )
 }

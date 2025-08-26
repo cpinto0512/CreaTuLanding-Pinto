@@ -15,12 +15,12 @@ const NavBar = () => {
                             aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup" >
+                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup" style={{justifyContent: 'space-around'}}>
                             <a className="nav-link">Frutos secos</a>
                             <a className="nav-link" >Bebidas</a>
                             <a className="nav-link" >Otros productos</a>
+                            <CartWidget />
                         </div>
-                        <CartWidget />
                     </div>
                 </nav>
             </header>
