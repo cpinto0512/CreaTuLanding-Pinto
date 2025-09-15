@@ -1,10 +1,28 @@
-import React from 'react'
+import {useState,useEffect} from 'react'
+import { getProductos, getProdByCategory } from '../../Asycmocks'
+import ItemList from '../ItemList/ItemList'
+import { useParams } from 'react-router-dom'
 
-const ItemListContainer = ({producto}) => {
+const ItemListContainer = () => {
+
+    const [productos,setproductos] = useState([])
+
+    const {idCat} = useParams()
+
+    useEffect(()=>{
+        const funcionProductos = idCat ? getProdByCategory : getProductos;
+
+        funcionProductos(idCat)
+         .then(respuesta=>setproductos(respuesta))
+         .catch(error => console.log(error))
+    },[idCat])
+
     return (
-        <ul>
-            <li>{producto.nombre}</li>
-        </ul>
+        <>
+        <h2>Mis Productos</h2>
+        <ItemList productos={productos}/>
+        </>
+        
     )
 }
 

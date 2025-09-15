@@ -1,0 +1,19 @@
+.ItemDetail{
+    text-align: center;
+    border: 1px solid black;
+    margin:1rem 4rem;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+img{
+width: 200px;
+    object-fit: contain;
+    border-radius: 30px;}
+
+button{
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    padding: 10px,20px;
+}

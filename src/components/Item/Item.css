@@ -1,0 +1,25 @@
+.cardProducto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border-radius: 10px;
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem
+}
+
+.cardProducto img{
+    width: 200px;
+    object-fit: contain;
+    border-radius: 30px;
+}
+.cardProducto h3{
+    text-align: center;
+}
+.cardProducto button{
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    padding: 10px,20px;
+}

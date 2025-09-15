@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom"
 import CartWidget from "../CartWidget/CartWidget"
 
 
@@ -7,18 +8,18 @@ const NavBar = () => {
             <header>
                 <nav className="navbar navbar-expand-lg bg-body-tertiary">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">
-                            <h1>Sprout House</h1>
-                        </a>
+
+                        <Link to="/"><h1 className="navbar-brand">Sprout House</h1></Link>
+
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                             aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup" style={{justifyContent: 'space-around'}}>
-                            <a className="nav-link">Frutos secos</a>
-                            <a className="nav-link" >Bebidas</a>
-                            <a className="nav-link" >Otros productos</a>
+                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup" style={{ justifyContent: 'space-around' }}>
+                                <NavLink to="/categoria/Cat1"><li className="nav-link">Cat 1</li></NavLink>
+                                <NavLink to="/categoria/Cat2"><li className="nav-link" >Cat 2</li></NavLink>
+                                <NavLink to="/categoria/Cat3"><li className="nav-link" >Cat 3</li></NavLink>
                             <CartWidget />
                         </div>
                     </div>
