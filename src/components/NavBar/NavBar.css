@@ -1,3 +1,9 @@
-.Categories{
-    display: flex;
+#storeNavbar{
+    background-color: var(--navBackground) !important;
+    margin-bottom: 15px;
+    color: white;
+}
+
+nav h1 {
+    color: white !important;
 }

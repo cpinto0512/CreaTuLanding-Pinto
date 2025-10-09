@@ -1,28 +1,42 @@
-import {useState,useEffect} from 'react'
-import { getProductos, getProdByCategory } from '../../Asycmocks'
+import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../services/config'
+import Loader from '../Loader/Loader'
 
 const ItemListContainer = () => {
 
-    const [productos,setproductos] = useState([])
+    const [productos, setproductos] = useState([])
+    const [loading, setLoading] = useState(false)
 
-    const {idCat} = useParams()
+    const { idCat } = useParams()
 
-    useEffect(()=>{
-        const funcionProductos = idCat ? getProdByCategory : getProductos;
+    useEffect(() => {
+        setLoading(true)
+        const funcionProductos = idCat ? query(collection(db, "productos"), where("idCat", "==", idCat)) : collection(db, "productos");
 
-        funcionProductos(idCat)
-         .then(respuesta=>setproductos(respuesta))
-         .catch(error => console.log(error))
-    },[idCat])
+        getDocs(funcionProductos)
+            .then(res => {
+                const nuevosProductos = res.docs.map(doc => {
+                    const data = doc.data()
+                    return { id: doc.id, ...data }
+                })
+                setproductos(nuevosProductos)
+            })
+            .catch(error => console.log(error))
+            .finally(() => {
+                setLoading(false)
+            })
+
+    }, [idCat])
 
     return (
-        <>
-        <h2>Mis Productos</h2>
-        <ItemList productos={productos}/>
-        </>
-        
+        <div className='bodyContainer'>
+            <h2>Productos {idCat}</h2>
+            {loading ? <Loader /> : <ItemList productos={productos} />}
+        </div>
+
     )
 }
 

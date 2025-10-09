@@ -1,28 +1,37 @@
 import { Link } from "react-router-dom"
 import ItemCount from "../ItemCount/ItemCount"
 import "./ItemDetail.css"
-import { useState } from "react"
+import { useState,useContext } from "react"
+
+import { carritoContext } from "../../context/CarritoContext"
 
 
-const ItemDetail = ({ id, nombre, precio, img, stock }) => {
+const ItemDetail = ({id, idCat, nombre, precio, img, stock, descripcion }) => {
 
     const [agregarCantidad, setAgregarCantidad] = useState(0)
+
+    const {agregarCarrito} = useContext(carritoContext)
     
     const manejadorCantidad = (cantidad) => {
         setAgregarCantidad(cantidad);
-        console.log("Productos agregados: " + cantidad)
+        
+        const item={id,nombre,precio}
+        agregarCarrito(item,cantidad)
     }
 
     return (
-        <div className='ItemDetail'>
-            <h2>Nombre: {nombre}</h2>
-            <h3>Precio: S/{precio}</h3>
-            <h3>ID: {id}</h3>
+        <div className="detailContainer">
+            <div className='ItemDetail'>
+            <h2>{`${nombre} ${idCat}`}</h2>
+            <h3>S/{precio}</h3>
+            
             <img src={img} alt={nombre}/>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error nihil dolore ducimus excepturi corporis optio libero ratione laboriosam qui ex deleniti, magnam beatae molestias id quisquam cumque aspernatur repudiandae explicabo.</p>
+            <p>{descripcion}</p>
             {
-                agregarCantidad > 0 ? <button><Link to ="/cart">Terminar Compra</Link></button>:  (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad}/>)
+                agregarCantidad > 0 ? <div className="ItemDetailButtonsContainer"><button><Link to ="/">Regresar al inicio</Link></button>
+                <button><Link to ="/cart">Terminar Compra</Link></button></div>:  (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad}/>)
             }
+        </div>
         </div>
     )
 }

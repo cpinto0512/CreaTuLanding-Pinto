@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey;
+    background-color: var(--cardBackground);
     border-radius: 10px;
     width: 20rem;
     margin: 1rem;
@@ -11,15 +11,15 @@
 
 .cardProducto img{
     width: 200px;
-    object-fit: contain;
+    max-height: 133px;
+    object-fit: cover;
     border-radius: 30px;
 }
 .cardProducto h3{
     text-align: center;
 }
-.cardProducto button{
-    font-size: 1.2rem;
-    border-radius: 10px;
-    border: none;
-    padding: 10px,20px;
+
+.cardProducto p{
+    color: var(--priceColor);
+    font-weight: bold;
 }

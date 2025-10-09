@@ -1,0 +1,24 @@
+.divButtons{
+    display: flex;
+    justify-content: space-evenly
+}
+
+.divButtons button{
+    margin: 10px;
+    width: 40%;
+}
+
+.divItemCount{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.divItemCount button{
+    
+    margin-bottom: 0px;
+}
+
+.divItemCount p{
+    margin: 0px;
+}

@@ -1,0 +1,21 @@
+.emptyCart{
+    display: flex;
+    justify-content: center;
+}
+
+.emptyCartContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: black;
+    border-style: dashed;
+    border-radius: 10px;
+    width: 40rem;
+    height: 15rem;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.cartButtonContainer{
+    display: flex;
+}

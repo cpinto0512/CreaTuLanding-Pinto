@@ -1,0 +1,48 @@
+:root {
+  --navBackground: #2E7D32;
+  --cardBackground: #A5D6A7;
+  --buttonBackground: #FFD600;
+  --priceColor: #FF8F00;
+  --bodyBackground: #FDFBEA;
+}
+
+#root{
+    background-color: var(--bodyBackground);
+    padding-bottom:20px;
+}
+
+a{
+    text-decoration: none !important;
+    color: inherit !important; 
+}
+
+button{
+    font-size: 1.2rem !important; 
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 10px,20px !important;
+    margin-bottom: 10px;
+    background-color: var(--buttonBackground);
+    transition: background-color 0.3s;
+}
+
+button:hover{
+    background-color: var(--priceColor);
+    color: white;
+}
+
+#checkoutButton{
+    font-size: 1.2rem !important; 
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 10px,20px !important;
+    margin-bottom: 10px;
+    background-color: var(--buttonBackground);
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#checkoutButton:hover{
+     background-color: var(--priceColor);
+    color: white;   
+}
