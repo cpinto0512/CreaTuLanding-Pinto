@@ -1,7 +1,6 @@
 import { useState, createContext, use, Children } from "react";
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
-import {toast, Bounce } from "react-toastify"
 
 
 
@@ -35,19 +34,8 @@ export const CarritoProvider = ({ children }) => {
             setCarrito(carritoActualizado)
             setCantidadTotal(prev => prev + cantidad)
             setTotal(prev => prev + (item.precio * cantidad))
-            toast.success("Producto agregado al carrito satisfactoriamente", {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            })
         }
-        
+
     }
 
     const eliminarProducto = (id) => {
@@ -78,8 +66,8 @@ export const CarritoProvider = ({ children }) => {
                     icon: "success"
                 });
                 setCarrito(carritoActualizado)
-        setCantidadTotal(prev => prev - productoEliminado.cantidad)
-        setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.cantidad))
+                setCantidadTotal(prev => prev - productoEliminado.cantidad)
+                setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.cantidad))
             } else if (
                 result.dismiss === Swal.DismissReason.cancel
             ) {
@@ -91,48 +79,14 @@ export const CarritoProvider = ({ children }) => {
             }
         });
 
-        
+
 
     }
 
     const vaciarCarrito = () => {
-
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: "btn btn-success",
-                cancelButton: "btn btn-danger"
-            },
-            buttonsStyling: true
-        });
-        swalWithBootstrapButtons.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    title: "Deleted!",
-                    text: "Se vacio el carrito :(",
-                    icon: "success"
-                });
-                setCarrito([])
+        setCarrito([])
         setCantidadTotal(0)
         setTotal(0)
-            } else if (
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire({
-                    title: "Cancelled",
-                    text: "Tu carrito sigue intacto :)",
-                    icon: "error"
-                });
-            }
-        });
-        
     }
 
     return (
