@@ -9,6 +9,7 @@
 #root{
     background-color: var(--bodyBackground);
     padding-bottom:20px;
+    height: 100%;
 }
 
 a{

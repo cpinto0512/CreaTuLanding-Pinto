@@ -32,10 +32,10 @@ const ItemListContainer = () => {
     }, [idCat])
 
     return (
-        <div className='bodyContainer'>
+        <main className='bodyContainer'>
             <h2>Productos {idCat}</h2>
             {loading ? <Loader /> : <ItemList productos={productos} />}
-        </div>
+        </main>
 
     )
 }

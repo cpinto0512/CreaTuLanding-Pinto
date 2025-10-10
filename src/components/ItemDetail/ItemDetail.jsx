@@ -4,6 +4,7 @@ import "./ItemDetail.css"
 import { useState,useContext } from "react"
 
 import { carritoContext } from "../../context/CarritoContext"
+import { ToastContainer} from "react-toastify"
 
 
 const ItemDetail = ({id, idCat, nombre, precio, img, stock, descripcion }) => {
@@ -28,9 +29,10 @@ const ItemDetail = ({id, idCat, nombre, precio, img, stock, descripcion }) => {
             <img src={img} alt={nombre}/>
             <p>{descripcion}</p>
             {
-                agregarCantidad > 0 ? <div className="ItemDetailButtonsContainer"><button><Link to ="/">Regresar al inicio</Link></button>
+                agregarCantidad > 0 ? <div className="ItemDetailButtonsContainer"><button><Link to ="/">Volver a Productos</Link></button>
                 <button><Link to ="/cart">Terminar Compra</Link></button></div>:  (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad}/>)
             }
+            <ToastContainer />
         </div>
         </div>
     )
